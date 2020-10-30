@@ -1,6 +1,6 @@
 {
   "name": "@zhouhao27/create-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create a node project with proper architecture. Including api and a web. Provide Swagger document for api",
   "main": "index.js",
   "bin": {
