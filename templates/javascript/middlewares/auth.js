@@ -3,8 +3,7 @@ import config from '../config'
 
 export default function(req, res, next) {
 
-  console.log(req.headers)
-  
+  // console.log(req.headers)  
   // Check if authorization header is set     
   if( req.hasOwnProperty('headers') && req.headers.hasOwnProperty('authorization') ) {
     try {
@@ -38,4 +37,4 @@ export default function(req, res, next) {
   }
   next();
   return;
-};
+}

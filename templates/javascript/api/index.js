@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import helloRouter from './hello'
 import apiDocRouter from './api-doc'
-import userRouter from './user'
+import userRouter from './user/controller'
 import auth from '../middlewares/auth'
 
 const apiRouter = Router()

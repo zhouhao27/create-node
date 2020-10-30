@@ -1,20 +1,21 @@
 import express from 'express'
 import apiRouter from './api'
-import config from './config'
+import compression from 'compression'
+import morgan from 'morgan'
 
 const app = express()
 
-setup()
-const server = start()
-
-function setup() {  
+// functions
+// setup middleware and routers
+const setup = () => {  
+  app.use(morgan('short'))
+  app.use(compression())
   app.use(express.json())
+  app.use('/', express.static('public'));
   app.use('/api', apiRouter)
 }
 
-function start() {
-  return app.listen(config.port, () => {
-    console.log(`Start server at ${server.address().port}`)
-  })  
-}
+// run 
+setup()
 
+export default app
