@@ -1,0 +1,34 @@
+{
+  "name": "@zhouhao27/create-node",
+  "version": "1.0.1",
+  "description": "Create a node project with proper architecture. Including api and a web. Provide Swagger document for api",
+  "main": "index.js",
+  "bin": {
+    "create-node": "index.js"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Socket.io",
+    "API",
+    "Web",
+    "Swagger",
+    "es6"
+  ],
+  "files": [
+    "bin/",
+    "src",
+    "templates/"
+  ],
+  "dependencies": {
+    "arg": "^4.1.0",
+    "chalk": "^2.4.2",
+    "esm": "^3.2.22",    
+    "inquirer": "^6.3.1",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  },
+  "author": "Zhou Hao",
+  "license": "MIT"
+}
