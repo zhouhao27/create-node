@@ -20,3 +20,7 @@ A command line tool to create Phaser project
   $ mkdir .data
   $ yarn dev
 ```
+## Reference
+
+[Javascript Template](https://github.com/zhouhao27/express-es6-boilerplate)
+
