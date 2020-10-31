@@ -14,16 +14,20 @@ const access = promisify(fs.access);
 const copy = promisify(ncp);
 
 async function copyTemplateFiles(options) {
-  return copy(options.templateDirectory, options.targetDirectory, {
-    clobber: false,
+  return copy(options.templateDirectory, options.targetDirectory, {        
     filter: (source) => {
-      // ignore the .git folder
-      const last = source.substring(this.source.lastIndexOf('/') + 1)
-      if (fs.lstatSync(source).isDirectory() && last === '.git') {        
+      console.log(source)      
+      const last = source.substring(source.lastIndexOf('/') + 1)
+      console.log(last)
+      if (fs.lstatSync(source).isDirectory()) {
+        // TODO: ignore whatever in .gitignore?
+        if (last === '.git' || last === 'node_modules')      
+        console.log('ignore')  
         return false
       }
       return true
-    }
+    },
+    clobber: false,
   });
 }
 
