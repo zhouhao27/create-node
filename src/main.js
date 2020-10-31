@@ -16,6 +16,14 @@ const copy = promisify(ncp);
 async function copyTemplateFiles(options) {
   return copy(options.templateDirectory, options.targetDirectory, {
     clobber: false,
+    filter: (source) => {
+      // ignore the .git folder
+      const last = source.substring(this.source.lastIndexOf('/') + 1)
+      if (fs.lstatSync(source).isDirectory() && last === '.git') {        
+        return false
+      }
+      return true
+    }
   });
 }
 
