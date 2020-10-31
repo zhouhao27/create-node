@@ -21,13 +21,15 @@ async function copyTemplateFiles(options) {
       console.log(last)
       if (fs.lstatSync(source).isDirectory()) {
         // TODO: ignore whatever in .gitignore?
-        if (last === '.git' || last === 'node_modules')      
-        console.log('ignore')  
-        return false
+        if (last === '.git' || last === 'node_modules' || last === 'package-lock.json' || last === 'yarn.lock') {
+          console.log('ignore')  
+          return false  
+        }     
       }
       return true
     },
     clobber: false,
+    stopOnErr: false
   });
 }
 
