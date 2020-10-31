@@ -16,15 +16,16 @@ const copy = promisify(ncp);
 async function copyTemplateFiles(options) {
   return copy(options.templateDirectory, options.targetDirectory, {        
     filter: (source) => {
-      console.log(source)      
-      const last = source.substring(source.lastIndexOf('/') + 1)
-      console.log(last)
+      const last = source.substring(source.lastIndexOf('/') + 1)      
       if (fs.lstatSync(source).isDirectory()) {
         // TODO: ignore whatever in .gitignore?
-        if (last === '.git' || last === 'node_modules' || last === 'package-lock.json' || last === 'yarn.lock') {
-          console.log('ignore')  
+        if (last === '.git' || last === 'node_modules') {
           return false  
         }     
+      } else {
+        if (last === 'package-lock.json' || last === 'yarn.lock') {
+          return false
+        }
       }
       return true
     },
