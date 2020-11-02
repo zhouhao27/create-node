@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import config from '../../config'
 import User from './user'
+import { info } from '../../utils/logger'
 
 export default class UserService {
   async login(email, password) {
@@ -11,7 +12,7 @@ export default class UserService {
     const user = await User.findOne({ email }).select('+password')
 
     if (!user || !(await user.passwordMatch(password, user.password))) {
-      throw new Error('Incorrect email or password', 401)
+      throw new Error('Incorrect email or password')
     }
 
     console.log(info(`${email} login success`))

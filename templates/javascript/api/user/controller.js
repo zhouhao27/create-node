@@ -1,5 +1,6 @@
 import express from 'express'
 import UserService from './service'
+import { error } from '../../utils/logger'
 
 const userRouter = express.Router()
 
@@ -43,6 +44,7 @@ userRouter
       const user = await service.login(email, password)
       return res.json(user)  
     } catch(err) {
+      console.error(error(err))
       return res.status(401).send(`${err}`)
     }
   })
@@ -80,6 +82,7 @@ userRouter
     if (user) {      
       return res.json(user)  
     }
+    console.error(error(err))
     return res.status(401).send('Failed to register')   
   })
   /**
